@@ -4,12 +4,12 @@ def get_char_frequencies(text):
         if char in char_frequencies: char_frequencies[char] += 1
         else: char_frequencies[char] = 1
     
-    return sorted(char_frequencies.items(), key=lambda x: x[1], reverse=True)
+    return char_frequencies
 
 
 def generate_huffman_tree(text):
-    char_frequencies = get_char_frequencies(text)
-    
+    char_frequencies = sorted(get_char_frequencies(text).items(), key=lambda x: x[1], reverse=True)
+
     i = len(char_frequencies) - 1
     while len(char_frequencies) > 1:
         combined_freq = char_frequencies[i][-1] + char_frequencies[i - 1][-1]
